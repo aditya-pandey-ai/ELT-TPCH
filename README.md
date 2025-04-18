@@ -45,8 +45,8 @@ elt-tpch/
 
 Below are previews of the final output from the pipeline after data has been processed:
 
-![Data Mart Preview 1](/images/Screenshot%202025-04-18%20at%2010.59.58%20PM.png)
-![Data Mart Preview 2](/images/Screenshot%202025-04-18%20at%2011.02.09%20PM.png)
+![Data Mart Preview 1](images/first.png)
+![Data Mart Preview 2](images/second.png)
 
 *The preview shows fact tables and transformed marts ready for analytical use.*
 
