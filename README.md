@@ -66,4 +66,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Contact
 
-For inquiries or feedback, please connect on [LinkedIn](https://linkedin.com/in/yourusername).
+For inquiries or feedback, please connect on [LinkedIn](https://linkedin.com/in/ap2304).
