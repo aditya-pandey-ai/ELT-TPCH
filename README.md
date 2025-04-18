@@ -2,65 +2,68 @@
 
 This project implements an ELT (Extract, Load, Transform) pipeline using the TPCH dataset from Snowflake, orchestrated with Apache Airflow. It serves as a demonstration of building scalable data pipelines for analytical processing.
 
-## Summary
-
-This project includes a full end-to-end ELT pipeline with the following components:
-
-1. **Snowflake RBAC Setup**  
-   - Defined and managed Snowflake roles, warehouses, users, schemas, and databases to follow principle-of-least-privilege access.
-
-2. **`dbt_project.yml` Configuration**  
-   - Set up the DBT project structure including versioning, model paths, and materialization strategies.
-
-3. **Staging and Sourcing Models**  
-   - Created DBT models to source raw data and stage it into a clean, standardized format.
-
-4. **Fact Tables and Data Marts**  
-   - Built data marts and fact tables to enable analytics-ready datasets.
-
-5. **DBT Macros**  
-   - Wrote reusable Jinja macros for repetitive SQL logic and dynamic configurations.
-
-6. **Generic and Singular Tests**  
-   - Implemented data quality checks using DBT's generic tests and custom singular test cases.
-
-7. **Orchestration Using Apache Airflow**  
-   - Managed the entire ELT workflow using Airflow DAGs for task scheduling and monitoring.
-
 ## Project Overview
 
-The ELT-TPCH project demonstrates extracting data from Snowflake's TPCH dataset, transforming it using DBT, and orchestrating the workflow with Apache Airflow. The project illustrates real-world data engineering best practices for enterprise-grade pipelines.
+The ELT-TPCH project extracts data from Snowflake's TPCH dataset, transforms it using dbt, and orchestrates the workflow with Apache Airflow. The implementation follows industry best practices for enterprise-grade data pipelines.
+
+### TPCH Dataset
+
+The TPCH dataset is a standard benchmark for evaluating database system performance. It simulates a business scenario involving orders, customers, and suppliers, providing a comprehensive dataset for testing data processing workflows.
+
+## Architecture Components
+
+### 1. Snowflake RBAC Setup
+- Defined and managed Snowflake roles, warehouses, users, schemas, and databases
+- Implemented principle-of-least-privilege access controls
+
+### 2. dbt Implementation
+- **Project Configuration**: Structured `dbt_project.yml` with versioning, model paths, and materialization strategies
+- **Staging Models**: Created standardized formats for raw data
+- **Fact Tables & Data Marts**: Built analytics-ready datasets
+- **Macros**: Developed reusable Jinja macros for repetitive SQL logic
+- **Testing**: Implemented both generic and singular tests for data quality validation
+
+### 3. Apache Airflow Orchestration
+- Designed DAGs for scheduling and monitoring the entire ELT workflow
+- Implemented task dependencies and error handling
 
 ## Project Structure
 
-- `dags/`: Airflow DAGs defining the ELT pipeline.  
-- `tests/`: Unit and integration tests for Airflow tasks and DBT models.  
-- `Dockerfile`: Docker image setup for the Airflow environment.  
-- `.astro/`: Astronomer CLI configurations for local Airflow development.  
-- `requirements.txt`: Python dependencies.  
-- `packages.txt`: System-level package requirements.  
-- `.gitignore`, `.dockerignore`: Ignored files during development and containerization.
+```
+elt-tpch/
+├── dags/                # Airflow DAGs defining the ELT pipeline
+├── tests/               # Unit and integration tests
+├── Dockerfile           # Docker image for Airflow environment
+├── .astro/              # Astronomer CLI configurations
+├── requirements.txt     # Python dependencies
+├── packages.txt         # System-level package requirements
+├── .gitignore
+└── .dockerignore
+```
 
-## TPCH Dataset
+## Results
 
-The TPCH dataset is a standard benchmark for evaluating the performance of database systems. It simulates a business scenario involving orders, customers, and suppliers, providing a comprehensive dataset for testing data processing workflows.
+Below are previews of the final output from the pipeline after data has been processed:
 
-## Preview
-Below is a preview of the final output from the pipeline after data has been extracted, transformed, and loaded using DBT and orchestrated via Airflow:
+![Data Mart Preview 1](/images/Screenshot%202025-04-18%20at%2010.59.58%20PM.png)
+![Data Mart Preview 2](/images/Screenshot%202025-04-18%20at%2011.02.09%20PM.png)
 
-
-The preview includes fact tables and transformed marts ready for analytical use.
-
-
+*The preview shows fact tables and transformed marts ready for analytical use.*
 
 ## Contributing
 
-Contributions are welcome! If you have suggestions for improvements or new features, feel free to fork the repository and submit a pull request.
+Contributions are welcome! If you have suggestions for improvements or new features:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Contact
 
-For any inquiries or feedback, please reach out via linkedin.
+For inquiries or feedback, please connect on [LinkedIn](https://linkedin.com/in/yourusername).
