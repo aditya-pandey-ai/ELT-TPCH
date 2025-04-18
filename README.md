@@ -1,48 +1,66 @@
-Overview
-========
+# ELT-TPCH
 
-Welcome to Astronomer! This project was generated after you ran 'astro dev init' using the Astronomer CLI. This readme describes the contents of the project, as well as how to run Apache Airflow on your local machine.
+This project implements an ELT (Extract, Load, Transform) pipeline using the TPCH dataset from Snowflake, orchestrated with Apache Airflow. It serves as a demonstration of building scalable data pipelines for analytical processing.
 
-Project Contents
-================
+## Summary
 
-Your Astro project contains the following files and folders:
+This project includes a full end-to-end ELT pipeline with the following components:
 
-- dags: This folder contains the Python files for your Airflow DAGs. By default, this directory includes one example DAG:
-    - `example_astronauts`: This DAG shows a simple ETL pipeline example that queries the list of astronauts currently in space from the Open Notify API and prints a statement for each astronaut. The DAG uses the TaskFlow API to define tasks in Python, and dynamic task mapping to dynamically print a statement for each astronaut. For more on how this DAG works, see our [Getting started tutorial](https://www.astronomer.io/docs/learn/get-started-with-airflow).
-- Dockerfile: This file contains a versioned Astro Runtime Docker image that provides a differentiated Airflow experience. If you want to execute other commands or overrides at runtime, specify them here.
-- include: This folder contains any additional files that you want to include as part of your project. It is empty by default.
-- packages.txt: Install OS-level packages needed for your project by adding them to this file. It is empty by default.
-- requirements.txt: Install Python packages needed for your project by adding them to this file. It is empty by default.
-- plugins: Add custom or community plugins for your project to this file. It is empty by default.
-- airflow_settings.yaml: Use this local-only file to specify Airflow Connections, Variables, and Pools instead of entering them in the Airflow UI as you develop DAGs in this project.
+1. **Snowflake RBAC Setup**  
+   - Defined and managed Snowflake roles, warehouses, users, schemas, and databases to follow principle-of-least-privilege access.
 
-Deploy Your Project Locally
-===========================
+2. **`dbt_project.yml` Configuration**  
+   - Set up the DBT project structure including versioning, model paths, and materialization strategies.
 
-1. Start Airflow on your local machine by running 'astro dev start'.
+3. **Staging and Sourcing Models**  
+   - Created DBT models to source raw data and stage it into a clean, standardized format.
 
-This command will spin up 4 Docker containers on your machine, each for a different Airflow component:
+4. **Fact Tables and Data Marts**  
+   - Built data marts and fact tables to enable analytics-ready datasets.
 
-- Postgres: Airflow's Metadata Database
-- Webserver: The Airflow component responsible for rendering the Airflow UI
-- Scheduler: The Airflow component responsible for monitoring and triggering tasks
-- Triggerer: The Airflow component responsible for triggering deferred tasks
+5. **DBT Macros**  
+   - Wrote reusable Jinja macros for repetitive SQL logic and dynamic configurations.
 
-2. Verify that all 4 Docker containers were created by running 'docker ps'.
+6. **Generic and Singular Tests**  
+   - Implemented data quality checks using DBT's generic tests and custom singular test cases.
 
-Note: Running 'astro dev start' will start your project with the Airflow Webserver exposed at port 8080 and Postgres exposed at port 5432. If you already have either of those ports allocated, you can either [stop your existing Docker containers or change the port](https://www.astronomer.io/docs/astro/cli/troubleshoot-locally#ports-are-not-available-for-my-local-airflow-webserver).
+7. **Orchestration Using Apache Airflow**  
+   - Managed the entire ELT workflow using Airflow DAGs for task scheduling and monitoring.
 
-3. Access the Airflow UI for your local Airflow project. To do so, go to http://localhost:8080/ and log in with 'admin' for both your Username and Password.
+## Project Overview
 
-You should also be able to access your Postgres Database at 'localhost:5432/postgres'.
+The ELT-TPCH project demonstrates extracting data from Snowflake's TPCH dataset, transforming it using DBT, and orchestrating the workflow with Apache Airflow. The project illustrates real-world data engineering best practices for enterprise-grade pipelines.
 
-Deploy Your Project to Astronomer
-=================================
+## Project Structure
 
-If you have an Astronomer account, pushing code to a Deployment on Astronomer is simple. For deploying instructions, refer to Astronomer documentation: https://www.astronomer.io/docs/astro/deploy-code/
+- `dags/`: Airflow DAGs defining the ELT pipeline.  
+- `tests/`: Unit and integration tests for Airflow tasks and DBT models.  
+- `Dockerfile`: Docker image setup for the Airflow environment.  
+- `.astro/`: Astronomer CLI configurations for local Airflow development.  
+- `requirements.txt`: Python dependencies.  
+- `packages.txt`: System-level package requirements.  
+- `.gitignore`, `.dockerignore`: Ignored files during development and containerization.
 
-Contact
-=======
+## TPCH Dataset
 
-The Astronomer CLI is maintained with love by the Astronomer team. To report a bug or suggest a change, reach out to our support.
+The TPCH dataset is a standard benchmark for evaluating the performance of database systems. It simulates a business scenario involving orders, customers, and suppliers, providing a comprehensive dataset for testing data processing workflows.
+
+## Preview
+Below is a preview of the final output from the pipeline after data has been extracted, transformed, and loaded using DBT and orchestrated via Airflow:
+
+
+The preview includes fact tables and transformed marts ready for analytical use.
+
+
+
+## Contributing
+
+Contributions are welcome! If you have suggestions for improvements or new features, feel free to fork the repository and submit a pull request.
+
+## License
+
+This project is licensed under the MIT License.
+
+## Contact
+
+For any inquiries or feedback, please reach out via linkedin.
